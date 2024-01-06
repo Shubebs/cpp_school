@@ -1,3 +1,16 @@
+// Global variable declaration
+int globalVariable;
+
+// Function definition
+
+void myFunction() {
+    // Access globalVariable here
+}
+int main() {
+    // Access globalVariable here
+    return 0;
+}
+
 #include <iostream>
 #include <limits>
 #include <fstream>
@@ -5,9 +18,7 @@
 #include <sstream>
 #include <cstring>
 #include <stdlib.h>
-<<<<<<< HEAD
-gfj
-=======
-rhrr
 
->>>>>>> 5577dff84c4a11cbbaa1cc06446aec397bb50593
+using namespace std;
+
+// Linked list node
