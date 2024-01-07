@@ -22,3 +22,33 @@ int main() {
 using namespace std;
 
 // Linked list node
+typedef struct Node
+{
+    int process;
+    int arrival_time;
+    int burst_time;
+    int priority;
+    int turnaround_time;
+    int waiting_time;
+    int time_remaining;
+    float average_time;
+    struct Node *next;
+} NODE;
+
+NODE *head, *tail = NULL;
+
+//validator
+int Validator(int option, int startLimit, int endLimit)
+
+{
+    if ((option <= startLimit || option <= endLimit) && (option != 0))
+    {
+        return true;
+    }
+    else
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return false;
+    }
+}
