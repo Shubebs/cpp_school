@@ -90,3 +90,4 @@ void sortHandler(int method)
             {
                 if (method == 1) //sort list according to arrival time
                 {
+                    if (current->arrival_time > index->arrival_time)
