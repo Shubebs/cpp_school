@@ -104,3 +104,6 @@ void sortHandler(int method)
                         current->priority = index->priority;
                         index->priority = prior;
                     }
+                    }
+                else if (method == 2) //sort list according to burst time
+                {
