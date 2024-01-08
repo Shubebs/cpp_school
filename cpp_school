@@ -67,3 +67,5 @@ int timeValidator(int time)
         return true;
     }
 }
+
+void sortHandler(int method)
