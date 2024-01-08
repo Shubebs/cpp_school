@@ -84,3 +84,9 @@ void sortHandler(int method)
     {
         while (current != NULL)
         {
+            index = current->next;
+
+            while (index != NULL)
+            {
+                if (method == 1) //sort list according to arrival time
+                {
