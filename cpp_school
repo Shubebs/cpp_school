@@ -109,3 +109,15 @@ void sortHandler(int method)
                 {
                     if (current->burst_time > index->burst_time)
                     {
+                        burst = current->burst_time;
+                        current->burst_time = index->burst_time;
+                        index->burst_time = burst;
+
+                        temp = current->arrival_time;
+                        current->arrival_time = index->arrival_time;
+                        index->arrival_time = temp;
+
+                        prior = current->priority;
+                        current->priority = index->priority;
+                        index->priority = prior;
+                    }
