@@ -107,3 +107,5 @@ void sortHandler(int method)
                     }
                 else if (method == 2) //sort list according to burst time
                 {
+                    if (current->burst_time > index->burst_time)
+                    {
