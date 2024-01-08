@@ -79,3 +79,8 @@ void sortHandler(int method)
     if (head == NULL)
     {
         return;
+        }
+    else
+    {
+        while (current != NULL)
+        {
