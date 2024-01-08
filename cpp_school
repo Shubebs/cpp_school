@@ -69,3 +69,13 @@ int timeValidator(int time)
 }
 
 void sortHandler(int method)
+
+{
+
+    NODE *current = head, *index = NULL;
+
+    int temp, burst, prior;
+
+    if (head == NULL)
+    {
+        return;
