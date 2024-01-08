@@ -52,3 +52,5 @@ int Validator(int option, int startLimit, int endLimit)
         return false;
     }
 }
+
+int timeValidator(int time)
