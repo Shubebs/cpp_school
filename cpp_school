@@ -54,3 +54,16 @@ int Validator(int option, int startLimit, int endLimit)
 }
 
 int timeValidator(int time)
+
+{
+    if (time == 0)
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
