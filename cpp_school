@@ -125,3 +125,17 @@ void sortHandler(int method)
                 else if (method == 3) //sort list according to priority
                 {
                     if (current->priority > index->priority)
+                    {
+
+                        prior = current->priority;
+                        current->priority = index->priority;
+                        index->priority = prior;
+
+                        burst = current->burst_time;
+                        current->burst_time = index->burst_time;
+                        index->burst_time = burst;
+
+                        temp = current->arrival_time;
+                        current->arrival_time = index->arrival_time;
+                        index->arrival_time = temp;
+                    }
