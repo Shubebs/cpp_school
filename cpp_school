@@ -121,3 +121,6 @@ void sortHandler(int method)
                         current->priority = index->priority;
                         index->priority = prior;
                     }
+                }
+                else if (method == 3) //sort list according to priority
+                {
