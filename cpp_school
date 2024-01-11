@@ -23,3 +23,34 @@ typedef struct Node
 } NODE;
 
 NODE *head, *tail = NULL;  // Head and tail pointers for the linked list
+// Validator for input options
+int Validator(int option, int startLimit, int endLimit)
+{
+    if ((option <= startLimit || option <= endLimit) && (option != 0))
+    {
+        return true;
+    }
+    else
+    {
+        // Clear input buffer and ignore invalid input
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return false;
+    }
+}
+
+// Validator for time inputs
+int timeValidator(int time)
+{
+    if (time == 0)
+    {
+        // Clear input buffer and ignore invalid time
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
