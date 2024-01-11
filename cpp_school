@@ -54,3 +54,85 @@ int timeValidator(int time)
         return true;
     }
 }
+
+// Function to sort the linked list based on different criteria
+void sortHandler(int method)
+{
+
+    NODE *current = head, *index = NULL;
+
+    int temp, burst, prior;
+
+    if (head == NULL)
+    {
+        return;
+    }
+    else
+    {
+        while (current != NULL)
+        {
+            index = current->next;
+
+            while (index != NULL)
+            {
+                if (method == 1) // Sort list according to arrival time
+                {
+                    if (current->arrival_time > index->arrival_time)
+                    {
+                        // Swap arrival time, burst time, and priority
+                        temp = current->arrival_time;
+                        current->arrival_time = index->arrival_time;
+                        index->arrival_time = temp;
+
+                        burst = current->burst_time;
+                        current->burst_time = index->burst_time;
+                        index->burst_time = burst;
+
+                        prior = current->priority;
+                        current->priority = index->priority;
+                        index->priority = prior;
+                    }
+                }
+                else if (method == 2) // Sort list according to burst time
+                {
+                    if (current->burst_time > index->burst_time)
+                    {
+                        // Swap burst time, arrival time, and priority
+                        burst = current->burst_time;
+                        current->burst_time = index->burst_time;
+                        index->burst_time = burst;
+
+                        temp = current->arrival_time;
+                        current->arrival_time = index->arrival_time;
+                        index->arrival_time = temp;
+
+                        prior = current->priority;
+                        current->priority = index->priority;
+                        index->priority = prior;
+                    }
+                }
+                else if (method == 3) //sort list according to priority
+                {
+                    if (current->priority > index->priority)
+                    {
+                        // Swap priority, burst time, and arrival time
+                        prior = current->priority;
+                        current->priority = index->priority;
+                        index->priority = prior;
+
+                        burst = current->burst_time;
+                        current->burst_time = index->burst_time;
+                        index->burst_time = burst;
+
+                        temp = current->arrival_time;
+                        current->arrival_time = index->arrival_time;
+                        index->arrival_time = temp;
+                    }
+                }
+
+                index = index->next;
+            }
+            current = current->next;
+        }
+    }
+}
