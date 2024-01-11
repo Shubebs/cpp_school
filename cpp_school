@@ -640,3 +640,42 @@ int main(int argc, char *argv[])
 
                     } while (!validate);
                 }
+
+                // 2)
+                else if (option == 2)
+                {
+                    string result;
+
+                    ifstream myfile(argv[4]);
+
+                    if (myfile.is_open())
+                    {
+                        while (getline(myfile, result))
+                        {
+                            cout << result << '\n';
+                        }
+                        myfile.close();
+                    }
+
+                    else
+                    {
+                        cout << "Unable to open file";
+                    }
+                }
+                // 3)
+                else if (option == 3)
+                {
+                    cout << "Program is terminated sucessfully";
+                    break;
+                }
+            }
+
+            //if the data is valid
+            //the validator will send true i will make it false to break the loop
+            //if the validator send false i will make it true to loop again
+
+        } while (!validate);
+    }
+
+    return 0;
+}
