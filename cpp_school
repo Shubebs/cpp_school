@@ -216,3 +216,53 @@ void insertHandler(NODE **head, int process, int arrival_time, int burst_time, i
         r->next = point;
     }
 }
+
+// Calculate waiting times for processes
+void calculationController(NODE *point, int method)
+{
+    sortHandler(method);
+    while (point != NULL)
+    {
+        point->waiting_time = point->turnaround_time - point->burst_time;
+        point = point->next;
+    }
+}
+
+//display the linked list
+void outputHandler(NODE *p, int count, string output_file, int method, string input_file)
+{
+    ofstream myfile;
+    myfile.open(output_file.c_str(), ios_base::app);
+
+    if (method == 1)
+    {
+        myfile << "\n\nScheduling Method: First Come First Serve" << endl;
+        myfile << "Screen Output: " << input_file << ":\n" << endl;
+        myfile << "Process Waiting Times :\n"
+               << endl;
+    }
+    else if (method == 2)
+    {
+        myfile << "\n\nScheduling Method: Shortest Job First - Non-Premtive Mode" << endl;
+        myfile << "Screen Output: " << input_file << ":\n" << endl;
+        myfile << "Process Waiting Times :\n"
+               << endl;
+    }
+    else if (method == 3)
+    {
+        myfile << "\n\nScheduling Method: Priority Scheduling - Non-Premtive Mode" << endl;
+        myfile << "Screen Output: " << input_file << ":\n" << endl;
+        myfile << "Process Waiting Times :\n"
+               << endl;
+    }
+
+    float totalWaitingTime = 0.0;
+    while (p != NULL)
+    {
+        myfile << "P" << p->process << " : " << p->waiting_time << " ms" << endl; // append " ms" to the waiting time
+        totalWaitingTime += p->waiting_time;
+        p = p->next;
+    }
+    myfile << "\nAverage Waiting Time: " << totalWaitingTime / count << " ms" << endl; // append " ms" to the average waiting time
+    myfile.close();
+}
