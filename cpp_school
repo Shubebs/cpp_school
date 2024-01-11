@@ -503,3 +503,140 @@ int main(int argc, char *argv[])
             cout << "Option> ";
 
             cin >> option;
+
+            //validator return false for not valid data
+            validate = Validator(option, 1, 3);
+
+            if (!validate)
+            {
+                cout << "\n Please enter the correct choice" << endl;
+            }
+            else
+            {
+                // 1)
+                if (option == 1)
+                {
+                    do
+                    {
+                        cout << "\n 1) First Come, First Served Scheduling" << endl;
+                        cout << "\n 2) Shortest-Job-First Scheduling " << endl;
+                        cout << "\n 3) Priority Scheduling " << endl;
+                        cout << "\n 4) Round-Robin Scheduling\n"
+                             << endl;
+
+                        cout << "Option> ";
+
+                        cin >> option;
+
+                        validate = Validator(option, 1, 4);
+                        if (!validate)
+                        {
+                            cout << "\n Please enter the correct choice" << endl;
+                        }
+                        else
+                        {
+                            // 1) FCFS
+                            if (option == 1)
+                            {
+
+                                calculationController(head, 1);
+
+                                outputHandler(head, count, argv[4], 1);
+                            }
+                            // 2) SJF
+                            else if (option == 2)
+                            {
+
+                                do
+                                {
+                                    cout << "\n 1) Premtive Mode \t";
+                                    cout << " 2) Non-Premtive Mode \n"
+                                         << endl;
+
+                                    cout << "Option> ";
+
+                                    cin >> option;
+
+                                    validate = Validator(option, 1, 2);
+
+                                    if (!validate)
+                                    {
+                                        cout << "\n Please enter the correct choice" << endl;
+                                    }
+
+                                } while (!validate);
+
+                                if (option == 1)
+                                {
+                                    premtiveSJF(head, count, argv[4]);
+                                }
+                                else if (option == 2)
+                                {
+                                    calculationController(head, 2);
+
+                                    outputHandler(head, count, argv[4], 2);
+                                }
+                            }
+                            // 3) PS
+                            else if (option == 3)
+                            {
+
+                                do
+                                {
+                                    cout << "\n 1) Premtive Mode \t";
+                                    cout << " 2) Non-Premtive Mode \n"
+                                         << endl;
+
+                                    cout << "Option> ";
+
+                                    cin >> option;
+
+                                    validate = Validator(option, 1, 2);
+
+                                } while (!validate);
+
+                                if (option == 1)
+                                {
+                                    premtivePriorityScheduler(head, count, argv[4]);
+                                }
+                                else if (option == 2)
+                                {
+                                    calculationController(head, 3);
+
+                                    outputHandler(head, count, argv[4], 3);
+                                }
+                            }
+                            // 4) RRS
+                            else if (option == 4)
+                            {
+                                validate = true;
+                                int timeQ;
+                                do
+                                {
+                                    if (validate)
+                                    {
+
+                                        cout << "Please enter the Time Quantum \n";
+                                    }
+                                    cout << "Option> ";
+                                    cin >> timeQ;
+                                    cout << endl;
+
+                                    validate = timeValidator(timeQ);
+
+                                    if (!validate)
+                                    {
+
+                                        cout << "\nPlease enter the valid Time Quantum \n";
+                                    }
+                                    else
+                                    {
+                                        RRScontroller(head, timeQ, count, argv[4]);
+                                    }
+
+                                } while (!validate);
+                            }
+                        }
+
+                    } while (!validate);
+                }
