@@ -136,3 +136,59 @@ void sortHandler(int method)
         }
     }
 }
+
+// Function to control Round Robin Scheduling
+void RRScontroller(NODE *head, int time_quantum, int count, string file)
+{
+
+    float total = 0;
+    ofstream myfile;
+    myfile.open(file.c_str(), ios_base::app);
+
+    // Round Robin scheduling linked list
+    sortHandler(1);
+
+    head->waiting_time = 0;
+
+    int current_time = 0;
+    int i = 0;
+    myfile << "\nScheduling Method: Robin Round Scheduling Method" << endl;
+    myfile << "Process Waiting Times :\n"
+           << endl;
+    do
+    {
+        bool counter = true;
+
+        while (head != NULL)
+        {
+            if (head->time_remaining > 0)
+            {
+                counter = false;
+
+                if (head->time_remaining > time_quantum)
+                {
+                    current_time = current_time + time_quantum;
+
+                    head->time_remaining -= time_quantum;
+                }
+                else
+                {
+                    current_time = current_time + head->time_remaining;
+
+                    head->waiting_time = current_time - head->burst_time;
+
+                    head->time_remaining = 0;
+                }
+            }
+            total += head->waiting_time;
+            i++;
+            myfile << "P" << i << " : " << head->waiting_time << endl;
+            head = head->next;
+        }
+        if (counter == true)
+            break;
+    } while (true);
+
+    myfile << "\nAverage Waiting Time: " << total / count << endl;
+    myfile.close();
+}
