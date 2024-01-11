@@ -327,3 +327,63 @@ void premtiveSJF(NODE *head, int count, string file)
     myfile << "\nAverage Waiting Time: " << total / count << endl;
     myfile.close();
 }
+
+//Priority Scheduling Premtive Mode Algoritham
+void premtivePriorityScheduler(NODE *head, int count, string file)
+{
+
+    int t = 0;
+    int i = 0;
+    int complete = 0;
+    int time_taken;
+    float total = 0;
+    bool serve = false;
+
+    ofstream myfile;
+    myfile.open(file.c_str(), ios_base::app);
+
+    //sort linked list according to burst_time
+    sortHandler(3);
+    myfile << "\nScheduling Method: Priority Scheduling - Premtive Mode" << endl;
+    myfile << "Process Waiting Times :\n"
+           << endl;
+    while (complete != count)
+    {
+        while (head != NULL)
+        {
+
+            if ((head->arrival_time <= t) && (head->time_remaining > 0))
+            {
+                serve = true;
+            }
+
+            if (serve == false)
+            {
+                t++;
+                continue;
+            }
+            //linked list is sorted so whenever the time will come we will decrease it until it will be zero
+            head->time_remaining = head->time_remaining - 1;
+
+            if (head->time_remaining == 0)
+            {
+                complete++;
+
+                serve = false;
+
+                time_taken = t + 1;
+
+                head->waiting_time = time_taken - head->burst_time - head->arrival_time;
+
+                myfile << "P" << i + 1 << " : " << head->waiting_time << endl;
+                total += head->waiting_time;
+                i++;
+                head = head->next;
+            }
+
+            t++;
+        }
+    }
+    myfile << "\nAverage Waiting Time: " << total / count << endl;
+    myfile.close();
+}
