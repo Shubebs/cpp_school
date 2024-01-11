@@ -192,3 +192,27 @@ void RRScontroller(NODE *head, int time_quantum, int count, string file)
     myfile << "\nAverage Waiting Time: " << total / count << endl;
     myfile.close();
 }
+
+//insert data into the linked list
+void insertHandler(NODE **head, int process, int arrival_time, int burst_time, int priority, int turnaround_time)
+{
+
+    NODE *point, *r = *head;
+    point = (NODE *)malloc(sizeof(NODE));
+    point->process = process;
+    point->arrival_time = arrival_time;
+    point->burst_time = burst_time;
+    point->priority = priority;
+    point->turnaround_time = turnaround_time;
+    point->time_remaining = point->burst_time; //for round robin scenario
+
+    point->next = NULL;
+    if (*head == NULL)
+        *head = point;
+    else
+    {
+        while (r->next != NULL)
+            r = r->next;
+        r->next = point;
+    }
+}
