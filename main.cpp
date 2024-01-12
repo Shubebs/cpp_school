@@ -405,8 +405,8 @@ int main(int argc, char *argv[])
         {
             cout << "Commands:\n"
                  << endl;
-            cout << "-f <File input.txt>\n";
-            cout << "-o <output.txt/Screen Output>\n";
+            cout << "-f <input file>\n";
+            cout << "-o <output file>\n";
         }
     }
 
