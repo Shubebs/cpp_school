@@ -541,7 +541,7 @@ int main(int argc, char *argv[])
 
                                 calculationController(head, 1);
 
-                                outputHandler(head, count, argv[4], 1);
+outputHandler(head, count, argv[4], 1, "input_file");  
                             }
                             // 2) SJF
                             else if (option == 2)
@@ -574,8 +574,7 @@ int main(int argc, char *argv[])
                                 {
                                     calculationController(head, 2);
 
-                                    outputHandler(head, count, argv[4], 2);
-                                }
+outputHandler(head, count, argv[4], 2, "input_file");                                  }
                             }
                             // 3) PS
                             else if (option == 3)
@@ -603,7 +602,7 @@ int main(int argc, char *argv[])
                                 {
                                     calculationController(head, 3);
 
-                                    outputHandler(head, count, argv[4], 3);
+                                    outputHandler(head, count, argv[4], 3, "input_file");  
                                 }
                             }
                             // 4) RRS
